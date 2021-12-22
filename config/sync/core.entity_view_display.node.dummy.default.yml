@@ -1,0 +1,20 @@
+uuid: 7f3473bd-eeb2-4c5c-b078-7b1b21c6aad4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.dummy
+  module:
+    - user
+id: node.dummy.default
+targetEntityType: node
+bundle: dummy
+mode: default
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  search_api_excerpt: true

@@ -1,0 +1,24 @@
+site_name: Drupal project
+nav:
+  - Home: index.md
+  - Project:
+    - About: project/project.md
+    - Team: project/team.md
+  - Entity:
+    - Types: entities/entities.md
+  - Roles:
+    - Roles: roles/roles.md
+  - Modules:
+    - Modules: modules/modules.md
+  - Media:
+     - Image styles: media/image/image-styles.md
+  - Deployments:
+    - Release process: deployment/release-proces.md
+  - How to:
+    - Test the project: testing/behat.md
+theme: readthedocs
+markdown_extensions:
+  - toc:
+      permalink: "#"
+      baselevel: 2
+      separator: "_"

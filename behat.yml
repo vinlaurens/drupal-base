@@ -1,0 +1,65 @@
+default:
+  autoload:
+    '': '%paths.base%/tests/behat/bootstrap'
+  suites:
+    default:
+      paths:
+        - '%paths.base%/tests/behat/default'
+      contexts:
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - FailureContext
+        - OrdinaDigitalServices\ModuleContext
+  extensions:
+    Bex\Behat\ScreenshotExtension:
+      image_drivers:
+        local:
+          screenshot_directory: /[SHARED_FOLDER]/screenshots
+    Behat\MinkExtension:
+      goutte: ~
+      base_url: "http://dev.drupal-base.nl"
+      files_path: '%paths.base%/tests/behat/files/'
+      javascript_session: selenium2
+      browser_name: chrome
+      selenium2:
+        wd_host: "http://localhost:4444/wd/hub"
+        capabilities:
+          # required by mink-extension 2.3
+          marionette: null
+          browserName: chrome
+          browser: chrome
+          version: 63
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drupal:
+        drupal_root: '%paths.base%/public'
+      text:
+        username_field: "Gebruikersnaam"
+        password_field: "Wachtwoord"
+        log_in: "Inloggen"
+        log_out: "Uitloggen"
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages--error'
+        success_message_selector: '.messages--status'
+        warning_message_selector: '.messages--warning'
+        logged_in_selector: '.user-logged-in'
+        login_form_selector: '#user-login-form'
+      region_map:
+        comments: '.comments'
+        "main navigation": '.c-site-menu--main'
+        "local tasks": '.block--local-tasks-block'
+        "main content": '.block--system-main-block'
+        "highlights": '.c-highlights__list'
+
+ci:
+  extensions:
+    Bex\Behat\ScreenshotExtension:
+      image_drivers:
+        local:
+          screenshot_directory: /tmp/artifacts/screenshots
+    Behat\MinkExtension:
+      base_url: http://localhost

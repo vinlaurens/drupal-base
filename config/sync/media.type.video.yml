@@ -1,0 +1,18 @@
+uuid: 6c479355-97a3-40d7-91a2-625657e15c72
+langcode: en
+status: true
+dependencies: {  }
+id: video
+label: Video
+description: ''
+source: 'oembed:video'
+queue_thumbnail_downloads: true
+new_revision: false
+source_configuration:
+  thumbnails_directory: 'public://oembed_thumbnails'
+  providers:
+    - YouTube
+    - Vimeo
+  source_field: field_media_oembed_video
+field_map:
+  title: name
