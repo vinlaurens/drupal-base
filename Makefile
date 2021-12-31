@@ -1,4 +1,4 @@
-.PHONY: all check build deploy build-script deploy-script config config-script clean
+.PHONY: all check build deploy deploy-bsd build-script deploy-script deploy-bsd-script config config-script clean
 
 all: check
 
@@ -8,6 +8,8 @@ check:
 build: check build-script
 
 deploy: check deploy-script
+
+deploy-bsd: check deploy-bsd-script
 
 config: check config-script
 
@@ -22,3 +24,6 @@ build-script:
 
 deploy-script:
 	vendor/vinlaurens/deploy-scripts/deploy.sh
+
+deploy-bsd-script:
+	vendor/vinlaurens/deploy-scripts/deploy_bsd.sh
